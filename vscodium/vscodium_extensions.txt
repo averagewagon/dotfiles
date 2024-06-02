@@ -1,3 +1,4 @@
+jbenden.c-cpp-flylint
 jdinhlife.gruvbox
 jeanp413.open-remote-ssh
 jeff-hykin.better-cpp-syntax

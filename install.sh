@@ -7,10 +7,12 @@ set -eu
 # This script automates the setup of symlinks from the dotfiles
 # repository to the home directory. Pre-existing files will be backed up.
 #
-# Prerequisites:
+# Prerequisites for VSCodium extensions:
 # - zsh
 # - vscodium
 # - rustup
+# - CppCheck
+# - FlawFinder
 ###########################################################################
 
 #-----------------------------------------------------------------------------
