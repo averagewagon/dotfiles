@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-###########################################################################
+##############################################################################
 # install.sh
 #
 # This script automates the setup of symlinks from the dotfiles
@@ -9,10 +9,17 @@ set -eu
 #
 # Prerequisites:
 # - zsh
+# - vscodium
 ###########################################################################
 
-# Function to create a symbolic link and backup existing files
-create_symlink() {
+#-----------------------------------------------------------------------------
+# Helper functions
+#-----------------------------------------------------------------------------
+# Determine the directory where the script is located
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+
+# Creates a symbolic link and backups existing files
+setup_symlink() {
 	src=$1
 	dst=$2
 	if [ -L "${dst}" ]; then
@@ -26,8 +33,8 @@ create_symlink() {
 	ln -s "${src}" "${dst}"
 }
 
-# Function to clone a git repository to a specified location
-clone_repo() {
+# Clone a git repository to a specified location. Pulls if it already exists.
+setup_repo() {
 	repo=$1
 	dest=$2
 	if [ ! -d "${dest}" ]; then
@@ -41,9 +48,9 @@ clone_repo() {
 	fi
 }
 
-# Determine the directory where the script is located
-SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
-
+#-----------------------------------------------------------------------------
+# zsh configuration
+#-----------------------------------------------------------------------------
 # Install Oh My Zsh (must be done first, as it replaces .zshrc)
 if [ ! -d "${HOME}/.oh-my-zsh" ]; then
 	echo "Oh My Zsh not found, installing..."
@@ -53,20 +60,30 @@ else
 fi
 
 # Set up .zshrc
-create_symlink "${SCRIPT_DIR}/zsh/.zshrc" "${HOME}/.zshrc}"
+setup_symlink "${SCRIPT_DIR}/zsh/.zshrc" "${HOME}/.zshrc}"
 
 # Ensure the ZSH_CUSTOM variable is set
 ZSH_CUSTOM="${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}"
 
 # Clone zsh plugins
-clone_repo "https://github.com/zsh-users/zsh-history-substring-search" "${ZSH_CUSTOM}/plugins/history-substring-search"
-clone_repo "https://github.com/rupa/z.git" "${ZSH_CUSTOM}/plugins/z"
-clone_repo "https://github.com/junegunn/fzf.git" "${HOME}/.fzf"
+setup_repo "https://github.com/zsh-users/zsh-history-substring-search" "${ZSH_CUSTOM}/plugins/history-substring-search"
+setup_repo "https://github.com/rupa/z.git" "${ZSH_CUSTOM}/plugins/z"
+setup_repo "https://github.com/junegunn/fzf.git" "${HOME}/.fzf"
 
 # Set up fzf
 if [ -d "${HOME}/.fzf" ]; then
 	echo "Installing fzf..."
 	"${HOME}/.fzf/install" --all
 fi
+
+#-----------------------------------------------------------------------------
+# VSCodium configuration
+#-----------------------------------------------------------------------------
+setup_symlink "${SCRIPT_DIR}/vscodium/settings.json" "${HOME}/.config/VSCodium/User/settings.json"
+
+# Uncomment to use VSCode Marketplace
+# setup_symlink "${SCRIPT_DIR}/vscodium/product.json" "${HOME}"/.config/VSCodium/product.json"
+
+"${SCRIPT_DIR}/vscodium/install_extensions.sh"
 
 echo "Installation completed successfully."

@@ -1,6 +1,4 @@
-foxundermoon.shell-format
 jdinhlife.gruvbox
 pkief.material-icon-theme
-timonwong.shellcheck
 trunk.io
 yzhang.markdown-all-in-one
