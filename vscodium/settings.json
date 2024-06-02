@@ -1,0 +1,35 @@
+{
+  // Theme
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.iconTheme": "material-icon-theme",
+
+  // Set the default associations for files to ensure formatters are configured
+  "files.associations": {
+    "LICENSE": "plaintext"
+  },
+
+  // Turn off the scrolling minimap
+  "editor.minimap.enabled": false,
+
+  // Add lines at 100 characters
+  "editor.rulers": [98],
+
+  // Configure formatters
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "trunk.io",
+  "trunk.inlineDecorators": false,
+  "files.exclude": {
+    "**/.trunk/*actions/": true,
+    "**/.trunk/*logs/": true,
+    "**/.trunk/*notifications/": true,
+    "**/.trunk/*out/": true,
+    "**/.trunk/*plugins/": true
+  },
+  "files.watcherExclude": {
+    "**/.trunk/*actions/": true,
+    "**/.trunk/*logs/": true,
+    "**/.trunk/*notifications/": true,
+    "**/.trunk/*out/": true,
+    "**/.trunk/*plugins/": true
+  }
+}
