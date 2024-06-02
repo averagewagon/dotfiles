@@ -10,6 +10,7 @@ set -eu
 # Prerequisites:
 # - zsh
 # - vscodium
+# - rustup
 ###########################################################################
 
 #-----------------------------------------------------------------------------
@@ -66,15 +67,19 @@ setup_symlink "${SCRIPT_DIR}/zsh/.zshrc" "${HOME}/.zshrc}"
 ZSH_CUSTOM="${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}"
 
 # Clone zsh plugins
-setup_repo "https://github.com/zsh-users/zsh-history-substring-search" "${ZSH_CUSTOM}/plugins/history-substring-search"
+setup_repo "https://github.com/zsh-users/zsh-history-substring-search.git" "${ZSH_CUSTOM}/plugins/history-substring-search"
 setup_repo "https://github.com/rupa/z.git" "${ZSH_CUSTOM}/plugins/z"
 setup_repo "https://github.com/junegunn/fzf.git" "${HOME}/.fzf"
+setup_repo "https://github.com/zdharma-continuum/fast-syntax-highlighting.git" "${ZSH_CUSTOM}/plugins/fast-syntax-highlighting"
 
 # Set up fzf
 if [ -d "${HOME}/.fzf" ]; then
 	echo "Installing fzf..."
 	"${HOME}/.fzf/install" --all
 fi
+
+# fast-syntax-highlighting
+fast-theme free
 
 #-----------------------------------------------------------------------------
 # VSCodium configuration
