@@ -3,12 +3,20 @@
 ###########################################################################
 # install.sh
 #
-# This script automates the setup of symlinks from the dotfiles 
+# This script automates the setup of symlinks from the dotfiles
 # repository to the home directory. Pre-existing files will be backed up.
 ###########################################################################
 
-# Define the source and destination paths
-DOTFILES_DIR="$(pwd)"
+# Install Oh My Zsh (must be done first, as it replaces .zshrc)
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Oh My Zsh not found, installing..."
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo "Oh My Zsh already installed."
+fi
+
+# Define the source and destination paths for zshrc
+DOTFILES_DIR=$(cd "$(dirname "$0")" && pwd)
 ZSHRC_SRC="$DOTFILES_DIR/zsh/.zshrc"
 ZSHRC_DST="$HOME/.zshrc"
 
@@ -24,14 +32,5 @@ fi
 # Create a new symlink
 echo "Creating new symlink for .zshrc"
 ln -s "$ZSHRC_SRC" "$ZSHRC_DST"
-
-
-# Install Oh My Zsh
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    echo "Oh My Zsh not found, installing..."
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-else
-    echo "Oh My Zsh already installed."
-fi
 
 echo "Installation completed successfully."
