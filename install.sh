@@ -60,8 +60,19 @@ else
 	echo "Oh My Zsh already installed."
 fi
 
-# Set up .zshrc
-setup_symlink "${SCRIPT_DIR}/zsh/.zshrc" "${HOME}/.zshrc}"
+# Create .zshrc if it doesn't already exist
+shared_rc="${SCRIPT_DIR}/zsh/.zshrc_shared"
+if [ ! -f "${HOME}/.zshrc" ]; then
+	echo "#!/bin/zsh" >"${HOME}/.zshrc"
+	echo "Created new .zshrc file in ${HOME}."
+fi
+
+# Check if .zshrc already sources .zshrc_shared and add it if it doesn't
+if ! grep -q "source ${shared_rc}" "${HOME}/.zshrc"; then
+	echo "# Source .zshrc_shared from dotfiles" >>"${HOME}/.zshrc"
+	echo "source ${shared_rc}" >>"${HOME}/.zshrc"
+	echo "Added source command for .zshrc_shared in .zshrc."
+fi
 
 # Ensure the ZSH_CUSTOM variable is set
 ZSH_CUSTOM="${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}"
@@ -77,9 +88,6 @@ if [ -d "${HOME}/.fzf" ]; then
 	echo "Installing fzf..."
 	"${HOME}/.fzf/install" --all
 fi
-
-# fast-syntax-highlighting
-fast-theme free
 
 #-----------------------------------------------------------------------------
 # VSCodium configuration

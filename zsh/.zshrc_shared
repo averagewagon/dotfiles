@@ -40,7 +40,7 @@ else
 fi
 
 #-----------------------------------------------------------------------------
-# plugin configuration
+# Oh My Zsh configuration
 #-----------------------------------------------------------------------------
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fast-syntax-highlighting
+fast-theme free >/dev/null 2>&1
