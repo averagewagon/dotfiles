@@ -1,4 +1,9 @@
 jdinhlife.gruvbox
+jeanp413.open-remote-ssh
+jeff-hykin.better-cpp-syntax
+llvm-vs-code-extensions.vscode-clangd
 pkief.material-icon-theme
+rust-lang.rust-analyzer
 trunk.io
+twxs.cmake
 yzhang.markdown-all-in-one
