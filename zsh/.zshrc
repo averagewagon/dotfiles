@@ -6,7 +6,9 @@
 # plugins, themes, aliases, environment variables, and other settings.
 ###########################################################################
 
+###########################################################################
 # Oh My Zsh configuration
+###########################################################################
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -26,7 +28,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git fzf z history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -36,3 +38,8 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
     export EDITOR='vi'
 fi
+
+###########################################################################
+# fzf configuration
+###########################################################################
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
