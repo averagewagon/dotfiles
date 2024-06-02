@@ -22,6 +22,16 @@ elif [ -e "$ZSHRC_DST" ]; then
 fi
 
 # Create a new symlink
-echo "Creating new symlink"
+echo "Creating new symlink for .zshrc"
 ln -s "$ZSHRC_SRC" "$ZSHRC_DST"
+
+
+# Install Oh My Zsh
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Oh My Zsh not found, installing..."
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo "Oh My Zsh already installed."
+fi
+
 echo "Installation completed successfully."
