@@ -84,6 +84,7 @@ setup_repo "https://github.com/zsh-users/zsh-history-substring-search.git" "${ZS
 setup_repo "https://github.com/rupa/z.git" "${ZSH_CUSTOM}/plugins/z"
 setup_repo "https://github.com/junegunn/fzf.git" "${HOME}/.fzf"
 setup_repo "https://github.com/zdharma-continuum/fast-syntax-highlighting.git" "${ZSH_CUSTOM}/plugins/fast-syntax-highlighting"
+setup_repo "https://github.com/zsh-users/zsh-autosuggestions.git" "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
 
 # Set up fzf
 if [ -d "${HOME}/.fzf" ]; then
@@ -92,7 +93,12 @@ if [ -d "${HOME}/.fzf" ]; then
 fi
 
 #-----------------------------------------------------------------------------
-# VSCodium configuration
+# git configuration
+#-----------------------------------------------------------------------------
+git config --global core.excludesfile "${SCRIPT_DIR}"/git/.gitignore_global
+
+#-----------------------------------------------------------------------------
+# vscodium configuration
 #-----------------------------------------------------------------------------
 setup_symlink "${SCRIPT_DIR}/vscodium/settings.json" "${HOME}/.config/VSCodium/User/settings.json"
 
