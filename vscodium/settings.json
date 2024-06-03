@@ -31,5 +31,8 @@
     "**/.trunk/*notifications/": true,
     "**/.trunk/*out/": true,
     "**/.trunk/*plugins/": true
-  }
+  },
+
+  // Rainbow brackets
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true
 }
