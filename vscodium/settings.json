@@ -1,12 +1,10 @@
 {
+  // Disable telemetry (not relevant for vscodium, but applicable for vscode)
+  "telemetry.telemetryLevel": "off",
+
   // Theme
   "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.iconTheme": "material-icon-theme",
-
-  // Set the default associations for files to ensure formatters are configured
-  "files.associations": {
-    "LICENSE": "plaintext"
-  },
 
   // Turn off the scrolling minimap
   "editor.minimap.enabled": false,
@@ -14,9 +12,32 @@
   // Add lines at 100 characters
   "editor.rulers": [98],
 
+  // Turn off creating closing brackets and such
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingDelete": "never",
+  "editor.autoClosingOvertype": "never",
+  "editor.autoSurround": "never",
+  "editor.autoClosingQuotes": "never",
+  "editor.autoClosingComments": "never",
+
+  // Don't ask me to confirm when I interact with files
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": true,
+
+  // Increase shell history
+  "terminal.integrated.scrollback": 1000000,
+
+  // Set the default terminal profile
+  "terminal.integrated.defaultProfile.osx": "zsh",
+
+  // Rainbow brackets
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+
   // Configure formatters
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "trunk.io",
+
+  // Configure Trunk Check
   "trunk.inlineDecorators": false,
   "files.exclude": {
     "**/.trunk/*actions/": true,
@@ -33,6 +54,8 @@
     "**/.trunk/*plugins/": true
   },
 
-  // Rainbow brackets
-  "editor.bracketPairColorization.independentColorPoolPerBracketType": true
+  // Set the default associations for files to ensure formatters are configured
+  "files.associations": {
+    "LICENSE": "plaintext"
+  }
 }
