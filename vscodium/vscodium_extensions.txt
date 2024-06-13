@@ -1,3 +1,4 @@
+catppuccin.catppuccin-vsc-icons
 gruntfuggly.todo-tree
 jbenden.c-cpp-flylint
 jdinhlife.gruvbox
@@ -6,7 +7,6 @@ jeff-hykin.better-cpp-syntax
 llvm-vs-code-extensions.vscode-clangd
 ms-python.debugpy
 ms-python.python
-pkief.material-icon-theme
 rust-lang.rust-analyzer
 shardulm94.trailing-spaces
 trunk.io

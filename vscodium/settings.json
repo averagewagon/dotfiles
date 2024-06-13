@@ -1,17 +1,14 @@
 {
   // Disable telemetry (not relevant for vscodium, but applicable for vscode)
   "telemetry.telemetryLevel": "off",
-
   // Theme
   "workbench.colorTheme": "Gruvbox Dark Hard",
-  "workbench.iconTheme": "material-icon-theme",
-
   // Turn off the scrolling minimap
   "editor.minimap.enabled": false,
-
   // Add lines at 100 characters
-  "editor.rulers": [98],
-
+  "editor.rulers": [
+    98
+  ],
   // Turn off creating closing brackets and such
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingDelete": "never",
@@ -19,24 +16,21 @@
   "editor.autoSurround": "never",
   "editor.autoClosingQuotes": "never",
   "editor.autoClosingComments": "never",
-
   // Don't ask me to confirm when I interact with files
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": true,
-
   // Increase shell history
   "terminal.integrated.scrollback": 1000000,
-
   // Set the default terminal profile
   "terminal.integrated.defaultProfile.osx": "zsh",
-
   // Rainbow brackets
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-
   // Configure formatters
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "trunk.io",
-
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   // Configure Trunk Check
   "trunk.inlineDecorators": false,
   "files.exclude": {
@@ -53,9 +47,18 @@
     "**/.trunk/*out/": true,
     "**/.trunk/*plugins/": true
   },
-
   // Set the default associations for files to ensure formatters are configured
   "files.associations": {
     "LICENSE": "plaintext"
-  }
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  // Configuring clangd
+  "clangd.path": "/home/johnrhen/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/18.1.3/clangd_18.1.3/bin/clangd",
+  "[c]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+  "workbench.iconTheme": "catppuccin-latte",
 }
