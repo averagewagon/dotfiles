@@ -58,3 +58,11 @@ fast-theme free >/dev/null 2>&1
 
 # zsh-autosuggestions (make them a lighter gray)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+
+# Save the current prompt in a variable
+DEFAULT_PROMPT=$PROMPT
+
+# Check if connected via SSH and adjust the prompt
+if [[ -n "$SSH_CONNECTION" ]]; then
+    PROMPT='🔗 '$DEFAULT_PROMPT
+fi
