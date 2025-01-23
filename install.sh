@@ -98,6 +98,45 @@ fi
 git config --global core.excludesfile "${SCRIPT_DIR}"/git/.gitignore_global
 
 #-----------------------------------------------------------------------------
+# commands configuration
+#-----------------------------------------------------------------------------
+# Add the commands directory to PATH
+COMMANDS_DIR="${SCRIPT_DIR}/commands"
+if ! echo "$PATH" | grep -q "$COMMANDS_DIR"; then
+	echo "export PATH=\"$COMMANDS_DIR:\$PATH\"" >>"${HOME}/.zshrc"
+	echo "Added $COMMANDS_DIR to PATH in ~/.zshrc"
+fi
+
+#-----------------------------------------------------------------------------
+# commands autocompletion configuration
+#-----------------------------------------------------------------------------
+COMPLETION_SCRIPT="${HOME}/.zsh/completions/_commands"
+
+# Create the directory for Zsh completion scripts if it doesn't exist
+mkdir -p "${HOME}/.zsh/completions"
+
+# Generate the Zsh autocompletion script
+cat <<'EOF' >"$COMPLETION_SCRIPT"
+#compdef _commands
+
+# Dynamically fetch all executable scripts in the commands/ folder
+COMMANDS_DIR=${SCRIPT_DIR}/commands
+_arguments '*:script:($(find $COMMANDS_DIR -maxdepth 1 -type f -executable -exec basename {} \;))'
+EOF
+
+# Ensure Zsh knows where to find the completion script
+if ! grep -q "fpath+=${HOME}/.zsh/completions" "${HOME}/.zshrc"; then
+	echo "fpath+=${HOME}/.zsh/completions" >>"${HOME}/.zshrc"
+	echo "Added ${HOME}/.zsh/completions to fpath in ~/.zshrc"
+fi
+
+# Load and enable autocompletion
+if ! grep -q "autoload -Uz compinit && compinit" "${HOME}/.zshrc"; then
+	echo "autoload -Uz compinit && compinit" >>"${HOME}/.zshrc"
+	echo "Enabled Zsh autocompletion in ~/.zshrc"
+fi
+
+#-----------------------------------------------------------------------------
 # vscodium configuration
 #-----------------------------------------------------------------------------
 setup_symlink "${SCRIPT_DIR}/vscodium/settings.json" "${HOME}/.config/VSCodium/User/settings.json"
