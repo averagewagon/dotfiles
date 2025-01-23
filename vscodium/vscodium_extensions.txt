@@ -9,7 +9,6 @@ ms-python.debugpy
 ms-python.python
 rust-lang.rust-analyzer
 shardulm94.trailing-spaces
-trunk.io
 twxs.cmake
 waderyan.gitblame
 webfreak.debug
