@@ -26,8 +26,7 @@ fi
 TEMP_EXECUTABLE="/tmp/temp_executable_$$"
 
 # Compile the C file
-gcc "$1" -o "$TEMP_EXECUTABLE"
-if [ $? -eq 0 ]; then
+if gcc "$1" -o "$TEMP_EXECUTABLE"; then
     # Run the executable
     "$TEMP_EXECUTABLE"
     # Clean up by removing the temporary executable
