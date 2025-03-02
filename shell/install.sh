@@ -68,7 +68,7 @@ else
 fi
 
 # Create .zshrc if it doesn't already exist
-shared_rc="$REPO_ROOT/shell/zsh/.zshrc_shared"
+shared_rc="$REPO_ROOT/shell/.zshrc_shared"
 if [ ! -f "${HOME}/.zshrc" ]; then
     echo "#!/bin/zsh" >"${HOME}/.zshrc"
     echo "Created new .zshrc file in ${HOME}."

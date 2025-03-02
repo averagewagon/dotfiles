@@ -54,4 +54,9 @@ if prompt_user "\nRun vscodium/install.sh"; then
     "$REPO_ROOT/vscodium/install.sh"
 fi
 
+if prompt_user "\nRun nix/install.sh"; then
+    echo "Running nix/install.sh..."
+    "$REPO_ROOT/nix/install.sh"
+fi
+
 echo "Setup complete."
