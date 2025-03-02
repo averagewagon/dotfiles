@@ -47,4 +47,5 @@
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
+  "idf.hasWalkthroughBeenShown": true,
 }

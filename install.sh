@@ -15,8 +15,11 @@ error() {
     printf "\033[31mError: %s\033[0m\n" "$1" >&2
 }
 
-# Determine the repository root
-REPO_ROOT=$(git rev-parse --show-toplevel)
+# Determine the directory of the script
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+
+# Determine the repository root relative to the script directory
+REPO_ROOT=$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel)
 
 # Source the helper script
 # shellcheck disable=SC1091
